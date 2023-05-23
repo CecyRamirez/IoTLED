@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+    <!-- <script src="charts.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QHDS159HgZOGREFYm4dnic1Qt5NtvYSaNcOP+U1T9qYdvdihzeppsiign/+/3e7304a67Tbf@URQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <title>IoT Dashboard</title>
+</head>
+<body>
+    
+        <nav  class="navbar">
+            <div class="container">
+                <div class="logo">IoT Dashboard</div>
+            </div>
+        </nav> 
+    
+    
+
+
+    <header class="header">
+        <div class="container">
+            <img src="./images/FOCOON.PNG" alt="" class="menu-toggle">
+            <div>
+                <h1>Luces automáticas con interfaz de usuario para IoT</h1>
+                <p>
+                    Este es un proyecto de Sistemas Embebidos
+
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="boxes">
+        <!-- parte de david -->
+    <div class="container">
+        <nav class="menu">
+          <ul>
+            <li>
+              <h3>SENSOR RFID</h3>
+              <label class="switch">
+                <input type="checkbox" id="toggle1">
+                <span class="slider"></span>
+              </label>
+            </li>
+            <li>
+              <h3>SENSOR MQ-2</h3>
+              <label class="switch">
+                <input type="checkbox" id="toggle2">
+                <span class="slider"></span>
+              </label>
+            </li>
+            <li>
+              <h3>SENSOR PIR</h3>
+              <label class="switch">
+                <input type="checkbox" id="toggle3">
+                <span class="slider"></span>
+              </label>
+            </li>
+            <li>
+              <h3>SENSOR HEARTBEAT</h3>
+              <label class="switch">
+                <input type="checkbox" id="toggle4">
+                <span class="slider"></span>
+              </label>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    <!-- parte fin de david -->
+
+        <div class="container">
+            <div class="box">
+                <h2>Sensor de Ritmo Cardíaco</h2>
+                <div class="container mt-5" id="grafico-hr"> 
+                    <div class="card">
+                        <!-- <div class="card-header">Chart</div> -->
+                        <div class="card-body">
+                            <div class="col-12 mx-auto">
+                                <canvas id="myChart"></canvas>      
+                            </div>
+                        </div>
+                    </div>      
+                </div>
+            </div>
+            <div class="box">
+                <h2>Sensor de Gas MQ-2</h2>
+                <div id="chartdiv"></div>
+            </div>
+            <div class="box">
+                <h2> <i class="fas fa-arrows-alt-v"></i>
+                Tricky Positioning </h2>
+                <p>
+                    Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning 
+                </p>
+            </div>
+            <div class="box">
+                <h2> <i class="fas fa-arrows-alt-v"></i>
+                Tricky Positioning </h2>
+                <p>
+                    Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning 
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        <script src="charts.js"></script>
+</body>
+<footer>
+    <script>
+        var data={
+            labels:[0,2,3,4,5,6],
+            datasets:[
+                {
+                    label: 'Dataset1',
+                    data:[10,20,30,50,30,40],
+                    borderColor:'rgb(189,195,199)',
+                    lineTension: 0.1
+                }
+            ]
+        };
+        var config={
+            type:'line',
+            data:data,
+        };
+
+        var myChart =  new Chart(
+            document.getElementById('myChart'),
+            config
+        )
+        
+        window.setInterval(mycallback,2000);
+
+        function mycallback(){
+            var now= new Date();
+            now = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+            //el valor se va a sustitur por la propiedad json del latido
+            var value= Math.floor(Math.random() * 1000);
+            data.labels.push(now);
+            data.datasets[0].data.push(value);
+            myChart.update();
+        }
+    </script>
+</footer>
+
+</html>
