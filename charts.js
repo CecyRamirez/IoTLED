@@ -175,4 +175,3 @@ axisRange1.get("label").setAll({
 chart.appear(2000, 200);
 
 }); // end am5.ready()
-

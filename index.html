@@ -99,10 +99,11 @@
             </div>
             <div class="box">
                 <h2> <i class="fas fa-arrows-alt-v"></i>
-                Tricky Positioning </h2>
-                <p>
-                    Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning Tricky Positioning 
-                </p>
+                Sensor RFID </h2>
+                <div class="imgcentrar">
+                    <img id="image" src="./images/puertasCerradas.png" onclick="toggleElement()" />
+                  </div>
+                  <div id="chatBox" class="chatcito"></div>
             </div>
 
         </div>
@@ -150,6 +151,53 @@
             data.datasets[0].data.push(value);
             myChart.update();
         }
+
+        let state = false;
+
+        function toggleElement(n) {
+            var chatBox = document.getElementById("chatBox");
+            state = !state
+            var image = document.getElementById("image");
+
+            if(state){
+                image.src='./images/puertasAbiertas.png';
+                chatBox.innerHTML = "Hola, usuario tal...";
+                
+            }
+            else{
+                image.src='./images/puertasCerradas.png';
+                chatBox.innerHTML = "Adiós, usuario.";
+
+            }
+
+
+            // function printText() {
+            //   var chatBox = document.getElementById("chatBox");
+            //   var inputText = document.getElementById("inputText").value;
+        
+            //   chatBox.innerHTML += "<p>" + inputText + "</p>";
+            //   // Línea opcional para limpiar el campo de texto después de imprimirlo
+            //   document.getElementById("inputText").value = "";
+            // }
+//   if (image1.style.display === "none") {
+//     image1.style.display = "block";
+//     image2.style.pointerEvents = "none";
+//     chatBox.innerHTML = "Adiós, usuario.";
+//   } else {
+//     image1.style.display = "none";
+//     image2.style.pointerEvents = "auto";
+//     chatBox.innerHTML = "Hola, usuario tal...";
+//   }
+}
+
+function printText() {
+  var chatBox = document.getElementById("chatBox");
+  var inputText = document.getElementById("inputText").value;
+
+  chatBox.innerHTML += "<p>" + inputText + "</p>";
+  // Línea opcional para limpiar el campo de texto después de imprimirlo
+  document.getElementById("inputText").value = "";
+}
     </script>
 </footer>
 

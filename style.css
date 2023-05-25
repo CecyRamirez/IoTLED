@@ -227,3 +227,24 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.imgcentrar {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chat-box {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 5px;
+}
