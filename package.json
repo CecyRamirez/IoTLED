@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mongoose": "^7.2.1",
+    "mqtt": "^4.3.7",
+    "websocket": "^1.0.34",
+    "ws": "^8.13.0"
+  }
+}

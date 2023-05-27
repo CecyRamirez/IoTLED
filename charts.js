@@ -51,7 +51,7 @@ var xAxis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     maxDeviation: 0,
     min: 0,
-    max: 200,
+    max: 100,
     strictMinMax: true,
     renderer: axisRenderer
   })
@@ -109,7 +109,7 @@ bullet.get("sprite").on("rotation", function () {
 
 setInterval(function () {
     //reemplazar el value por el valor del sensor 
-  var value = Math.round(Math.random() * 200);
+  var value = Math.round(Math.random() * 100);
 
   axisDataItem.animate({
     key: "value",
@@ -131,7 +131,7 @@ setInterval(function () {
     duration: 500,
     easing: am5.ease.out(am5.ease.cubic)
   });
-}, 2000);
+}, 1000);
 
 chart.bulletsContainer.set("mask", undefined);
 
@@ -158,7 +158,7 @@ var axisRange1 = xAxis.createAxisRange(
   xAxis.makeDataItem({
     above: true,
     value: 50,
-    endValue: 200
+    endValue: 100
   })
 );
 
@@ -172,6 +172,6 @@ axisRange1.get("label").setAll({
 });
 
 // Make stuff animate on load
-chart.appear(2000, 200);
+chart.appear(1000, 100);
 
 }); // end am5.ready()

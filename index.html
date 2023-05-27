@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="pruebav3.js"></script>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
@@ -95,7 +96,7 @@
             <div class="box">
                 <h2> <i class="fas fa-arrows-alt-v"></i>
                 Sensor de Movimiento (PIR) </h2>
-                <img src="./images/radar-m.gif" alt="">
+                <div id="progress-bar"></div>
             </div>
             <div class="box">
                 <h2> <i class="fas fa-arrows-alt-v"></i>
@@ -115,7 +116,9 @@
         <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
         <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
         <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="charts.js"></script>
+        <script src="apexjs.js"></script>
 </body>
 <footer>
     <script>
@@ -126,7 +129,7 @@
                     label: 'Dataset1',
                     data:[10,20,30,50,30,40],
                     borderColor:'rgb(189,195,199)',
-                    lineTension: 0.1
+                    lineTension: 0.3
                 }
             ]
         };
@@ -140,13 +143,17 @@
             config
         )
         
-        window.setInterval(mycallback,2000);
+        window.setInterval(mycallback,700);
 
         function mycallback(){
             var now= new Date();
             now = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
             //el valor se va a sustitur por la propiedad json del latido
-            var value= Math.floor(Math.random() * 1000);
+            var value= Math.floor(Math.random() * 60);
+            // if(data.datasets[0].data.length >=20){
+            //     data.labels.push.shift();
+            //     data.datasets[0].data.shift();
+            // }
             data.labels.push(now);
             data.datasets[0].data.push(value);
             myChart.update();
@@ -169,26 +176,7 @@
                 chatBox.innerHTML = "Adiós, usuario.";
 
             }
-
-
-            // function printText() {
-            //   var chatBox = document.getElementById("chatBox");
-            //   var inputText = document.getElementById("inputText").value;
-        
-            //   chatBox.innerHTML += "<p>" + inputText + "</p>";
-            //   // Línea opcional para limpiar el campo de texto después de imprimirlo
-            //   document.getElementById("inputText").value = "";
-            // }
-//   if (image1.style.display === "none") {
-//     image1.style.display = "block";
-//     image2.style.pointerEvents = "none";
-//     chatBox.innerHTML = "Adiós, usuario.";
-//   } else {
-//     image1.style.display = "none";
-//     image2.style.pointerEvents = "auto";
-//     chatBox.innerHTML = "Hola, usuario tal...";
-//   }
-}
+        }
 
 function printText() {
   var chatBox = document.getElementById("chatBox");
